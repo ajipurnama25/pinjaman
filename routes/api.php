@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ use App\Http\Controllers\PeminjamanController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/user', [UserController::class, 'show']);
+Route::post('/addUser', [UserController::class, 'insert']);
+Route::post('/updateUser', [UserController::class, 'update']);
+Route::post('/deleteUser', [UserController::class, 'delete']);
 
 Route::get('/kendaraan', [KendaraanController::class, 'show']);
 Route::post('/addKendaraan', [KendaraanController::class, 'insert']);
